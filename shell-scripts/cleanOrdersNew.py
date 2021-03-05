@@ -24,7 +24,6 @@ for order in orders_parsed:
 # Get a list of orders from the other orderservice
 other_orders = requests.get(f"http://{trainticket_host}:{other_orderservice_port}/api/v1/orderOtherService/orderOther", headers=auth_header)
 other_orders_parsed = other_orders.json()["data"]
-print(other_orders_parsed)
 
 # Again, delete orders with a status of 6
 for order in other_orders_parsed:
