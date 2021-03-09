@@ -169,10 +169,10 @@ user_requests:
           # Chooses between invalid or valid booking request
           text: ';","tripId":"D1345","seatType":"2","date":"2021-12-12","from":"Shang Hai","to":"Su Zhou","assurance":"0","foodType": "1","stationName":"","storeName":"","foodName":"Bone Soup","foodPrice":"2.5"};","tripId":"ABDEFG","seatType":"2","date":"2021-12-12","from":"Shang Hai","to":"Su Zhou","assurance":"0","foodType": "1","stationName":"","storeName":"","foodName":"Bone Soup","foodPrice":"2.5"};'
     # Add login token
-    headers:
-      Authorization:
-      - type: VARIABLE
-        text: token
+    #headers:
+    #  Authorization:
+    #  - type: VARIABLE
+    #    text: token
     expected_response_codes:
       - 200
   # Book Ticket (Trips NOT starting with G or D)
@@ -195,10 +195,10 @@ user_requests:
           # Chooses between invalid or valid booking request
           text: ';","tripId":"Z1234","seatType":"2","date":"2021-12-12","from":"Shang Hai","to":"Nan Jing","assurance":"1","foodType": "0"};","tripId":"ABDEFG","seatType":"2","date":"2021-12-12","from":"Shang Hai","to":"Nan Jing","assurance":"1","foodType": "0"};'
     # Add login token
-    headers:
-      Authorization:
-        - type: VARIABLE
-          text: token
+#    headers:
+#      Authorization:
+#        - type: VARIABLE
+#          text: token
     expected_response_codes:
       - 200
   # Query Order list 1
@@ -216,10 +216,10 @@ user_requests:
           text: accountid
         - text: '","enableStateQuery":false,"enableTravelDateQuery":false,"enableBoughtDateQuery":false,"travelDateStart":null,"travelDateEnd":null,"boughtDateStart":null,"boughtDateEnd":null}'
     # Add login token
-    headers:
-      Authorization:
-        - type: VARIABLE
-          text: token
+#    headers:
+#      Authorization:
+#        - type: VARIABLE
+#          text: token
     expected_response_codes:
       - 200
   # Query Order list 2
@@ -240,10 +240,10 @@ user_requests:
           text: accountid
         - text: '","enableStateQuery":false,"enableTravelDateQuery":false,"enableBoughtDateQuery":false,"travelDateStart":null,"travelDateEnd":null,"boughtDateStart":null,"boughtDateEnd":null}'
     # Add login token
-    headers:
-      Authorization:
-        - type: VARIABLE
-          text: token
+#    headers:
+#      Authorization:
+#        - type: VARIABLE
+#          text: token
     expected_response_codes:
       - 200
   # Pay for a random order 1 (fails if selected order is already paid for)
@@ -264,10 +264,10 @@ user_requests:
           text: accountid
         - text: '","tripId":"D1345"}'
     # Add login token
-    headers:
-      Authorization:
-        - type: VARIABLE
-          text: token
+#    headers:
+#      Authorization:
+#        - type: VARIABLE
+#          text: token
     expected_response_codes:
       - 200
   # Pay for a random order 2 (fails if selected order is already paid for)
@@ -285,10 +285,10 @@ user_requests:
           text: accountid
         - text: '","tripId":"Z1234"}'
     # Add login token
-    headers:
-      Authorization:
-        - type: VARIABLE
-          text: token
+#    headers:
+#      Authorization:
+#        - type: VARIABLE
+#          text: token
     expected_response_codes:
       - 200
   # Consign order
@@ -303,10 +303,10 @@ user_requests:
         - type: VARIABLE
           text: accountid
     # Add login token
-    headers:
-      Authorization:
-        - type: VARIABLE
-          text: token
+#    headers:
+#      Authorization:
+#        - type: VARIABLE
+#          text: token
     expected_response_codes:
       - 200
   # Collect random ticket 1 (fails if selected order is not paid for)
@@ -319,10 +319,10 @@ user_requests:
         - type: VARIABLE
           text: orderid
     # Add login token
-    headers:
-      Authorization:
-        - type: VARIABLE
-          text: token
+#    headers:
+#      Authorization:
+#        - type: VARIABLE
+#          text: token
     expected_response_codes:
       - 200
   # Collect random ticket 2 (fails if selected order is not paid for)
@@ -335,10 +335,10 @@ user_requests:
         - type: VARIABLE
           text: orderidother
     # Add login token
-    headers:
-      Authorization:
-        - type: VARIABLE
-          text: token
+#    headers:
+#      Authorization:
+#        - type: VARIABLE
+#          text: token
     expected_response_codes:
       - 200
   # Enter random station 1 (fails if selected order is not collected)
@@ -353,8 +353,23 @@ user_requests:
     # Add login token
     headers:
       Authorization:
-        - type: VARIABLE
-          text: token
+        type: COMPOSITE
+        children:
+          - text: 'Bearer%20'
+          - type: VARIABLE
+            text: token
+#      - Authorization:
+#          type: COMPOSITE
+#          children:
+#            - text: 'Bearer '
+#            - type: VARIABLE
+#              text: token
+#      Authorization:
+#          type: COMPOSITE
+#          children:
+#            - text: 'Bearer '
+#            - type: VARIABLE
+#              text: token
     expected_response_codes:
       - 200
   # Enter random station 2 (fails if selected order is not collected)
@@ -367,9 +382,9 @@ user_requests:
         - type: VARIABLE
           text: orderidother
     # Add login token
-    headers:
-      Authorization:
-        - type: VARIABLE
-          text: token
+#    headers:
+#      Authorization:
+#        - type: VARIABLE
+#          text: token
     expected_response_codes:
       - 200
