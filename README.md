@@ -6,6 +6,12 @@ Start TrainTicket w/docker-compose:
 ```shell
 sudo docker-compose -f deployment/docker-compose-manifests/docker-compose-with-jaeger.yml up
 ```
+Shutting down & cleaning up after TrainTicket
+```shell
+sudo docker-compose -f deployment/docker-compose-manifests/docker-compose-with-jaeger.yml down
+sudo docker network prune -f
+```
+
 ## Loadgenerator usage
 First run load generator with:
 ```shell
