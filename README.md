@@ -6,10 +6,11 @@ Start TrainTicket w/docker-compose:
 ```shell
 sudo docker-compose -f deployment/docker-compose-manifests/docker-compose-with-jaeger.yml up
 ```
-Shutting down & cleaning up after TrainTicket
+Shutting down & cleaning up after TrainTicket - shuts down containers and removes unused networks and volumes.
 ```shell
 sudo docker-compose -f deployment/docker-compose-manifests/docker-compose-with-jaeger.yml down
 sudo docker network prune -f
+sudo docker volume prune -f
 ```
 
 ## Loadgenerator usage
