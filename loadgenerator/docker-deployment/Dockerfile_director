@@ -1,0 +1,12 @@
+# Adapted from the Dockerfile found in the original Github project
+FROM openjdk:slim
+
+RUN mkdir -p /opt/httploadgenerator
+COPY httploadgenerator.jar /opt/httploadgenerator/
+
+ENV RUNMODE webdirector
+# ENV INFLUXDB_URL http://influxdb:8086
+
+EXPOSE 8080
+
+CMD java -jar /opt/httploadgenerator/httploadgenerator.jar

@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  webdirector:
+    build:
+     context: .
+     dockerfile: Dockerfile_director
+    ports:
+      - "8082:8080"
+  loadgenerator:
+    restart: always
+    build:
+     context: .
+     dockerfile: Dockerfile_loadgenerator
+    ports:
+      - "24225:24225"
