@@ -1,0 +1,52 @@
+services:
+  - service_name: train-ticket
+    protocol: http
+    response_content_type: json
+    hosts:
+      - 192.168.1.120:18856/api/v1
+    common_headers:
+      Content-Type: application/json
+
+# Scenario 1: Overload Database
+user_requests:
+  # Get list of food orders
+  - service_name: train-ticket
+    method: GET
+    uri:
+      type: COMPOSITE
+      children:
+        - text: '/foodservice/orders'
+    expected_response_codes:
+      - 200
+  # Add food order
+  - service_name: train-ticket
+    method: POST
+    uri:
+      type: COMPOSITE
+      children:
+        - text: '/foodservice/orders'
+    body:
+      type: COMPOSITE
+      children:
+        - text: '{"id": "","orderId": "'
+        - type: RANDOMUUID
+          store_as: orderid
+        - text: '", "foodType": 1, "stationName": null, "storeName": null, "foodName": "'
+        - type: RANDOMUUID
+        - text: '", "price":'
+        - type: RANDOMINT
+          text: 0,100
+        - text: '}'
+    expected_response_codes:
+      - 200
+  # Delete added food order
+  - service_name: train-ticket
+    method: DELETE
+    uri:
+      type: COMPOSITE
+      children:
+        - text: '/foodservice/orders/'
+        - type: VARIABLE
+          text: orderid
+    expected_response_codes:
+      - 200
