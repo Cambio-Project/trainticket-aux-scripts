@@ -1,4 +1,6 @@
 # TrainTicket Utility Artifacts and Documentation
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4775889.svg)](https://doi.org/10.5281/zenodo.4775889)
+
 This repository contains the artifacts created during a student research project at the [University of Stuttgart]().
 They contain helper scripts and configuration files for using and loadtesting the TrainTicket benchmark system, partially adapted/ported from work provided by [Martin Straesser](mailto:martin.straesser@uni-wuerzburg.de) at the [University of Würzburg](https://www.uni-wuerzburg.de/en/home/).
 TrainTicket was developed at the [Fudan University](https://www.fudan.edu.cn/en/) and can be found on [GitHub](https://github.com/FudanSELab/train-ticket).
